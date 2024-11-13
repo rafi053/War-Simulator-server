@@ -1,10 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IUser  } from '../models/userModel';
-import resourceSchema from './resourceSchema';
-
-
-  
-
+import { IResource, IUser  } from '../models/userModel';
 
 
 
@@ -27,16 +22,15 @@ const UserSchema = new Schema<IUser>(
         },
         zone: {
             type: String,
-            required: [true, "Please enter zone"],
             trim: true
         },
-        resources: {
-            type: [resourceSchema],
-            trim: true
-        },
+        resources:{
+            type: [Schema.Types.ObjectId],
+            ref: "Resources",
+        } ,
+       
         budget: {
             type: Number,
-            required: [true, "Please enter budget"],
             trim: true
         }
        

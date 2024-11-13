@@ -1,16 +1,17 @@
-import {  Document } from "mongoose";
+import {  Document, Types } from "mongoose";
 
 export interface IUser extends Document {
   username: string;
   password: string;
   organizationName: OrganizationName;
-  zone?: Zone;
-  resources?: IResource[];
+  zone : Zone | undefined;
+  resources?: Types.ObjectId[];
   budget?: number;
 }
 
 
 export interface IResource {
+  _id: Types.ObjectId;
   missile: IMissiles;
   amount: number;
 }
@@ -55,4 +56,12 @@ export enum MissilesName {
   BADR_1 = "Badr-1",
   QUDS_1 = "Quds-1",
 }
+
+
+export interface IOrganization {
+  name: "IDF - North" | "IDF - South" | "IDF - Center" | "IDF - Judea and Samaria" | "Hezbollah" | "Hamas" | "IRGC" | "Houthis" ;
+
+  budget: number;
+  
+} 
 
