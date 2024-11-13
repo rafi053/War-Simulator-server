@@ -296,3 +296,9 @@ export const readOrganization = async (name: string): Promise<Organization | und
         }
         return mapOrganization;
     };
+
+    export const getAllInformation = async (): Promise<any> => {
+        const missiles: Missiles[] = await jsonfile.readFile(DB_MISSILES_PATH);
+        const organization: Organization[] = await jsonfile.readFile(DB_ORGANIZATION_PATH);
+        return { missiles, organization };
+    };

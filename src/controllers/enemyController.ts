@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { IUser } from "../models/userModel";
-import { getAllUsersService } from "../services/userService";
+import {  } from "../services/informationService";
 
-export const getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+
+export const information = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try{
-    const users: IUser[] | null = await getAllUsersService();
-    res.json({ users });
+    const information   = await getAllInformation();
+    res.json( information );
   } catch (error) {
     next(error);
   }
