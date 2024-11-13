@@ -1,5 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
-import { IUser } from '../models/userModel';
+import { IUser  } from '../models/userModel';
+import resourceSchema from './resourceSchema';
 
 
   
@@ -12,31 +13,34 @@ const UserSchema = new Schema<IUser>(
         username: {
             type: String,
             required: [true, "Please enter username"],
-            trim: true,
-            unique: true
+            trim: true
         },
         password: {
             type: String,
             required: [true, "Please enter password"],
             trim: true
         },
-        isAdmin: {
-            type: Boolean,
-            default: false
+        organizationName: {
+            type: String,
+            required: [true, "Please enter organization name"],
+            trim: true
         },
-        hasVoted: {
-            type: Boolean,
-            default: false
+        zone: {
+            type: String,
+            required: [true, "Please enter zone"],
+            trim: true
         },
-        votedFor: {
-            type: Schema.Types.ObjectId,
-            ref: "Candidate",
-            default: null
+        resources: {
+            type: [resourceSchema],
+            trim: true
         },
+        budget: {
+            type: Number,
+            required: [true, "Please enter budget"],
+            trim: true
+        }
        
     }
-    
-       
 );
 
 

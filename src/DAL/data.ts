@@ -1,7 +1,7 @@
 import { IUser } from "../models/userModel";
 import { ICandidate }  from "../models/candidateModel"
 import userSchema from "../schemas/userSchema";
-import candidateSchema from "../schemas/candidateSchema";
+import candidateSchema from "../schemas/missilesSchema";
 
 
 
