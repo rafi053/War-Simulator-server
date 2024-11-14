@@ -32,7 +32,7 @@ app.use("/enemy", enemyRouter)
 
 
 app.use(authMiddleware);
-app.use(adminMiddleware);
+// app.use(adminMiddleware);
 // app.use('/users', userRouter);
    
 

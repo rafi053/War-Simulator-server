@@ -297,8 +297,14 @@ export const readOrganization = async (name: string): Promise<Organization | und
         return mapOrganization;
     };
 
-    export const getAllInformation = async (): Promise<any> => {
-        const missiles: Missiles[] = await jsonfile.readFile(DB_MISSILES_PATH);
-        const organization: Organization[] = await jsonfile.readFile(DB_ORGANIZATION_PATH);
-        return { missiles, organization };
+    export const getResources = async (username: string): Promise<any> => {
+        const organization: Organization | null = await  userSchema.findOne({ username: username });
+        
+        if (!organization) {
+            throw new Error("Organization not found");
+        }
+        const resources: any = await resourceSchema.find({_id: organization.resources});
+       
+        
+        return { resources};
     };
